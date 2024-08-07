@@ -1,0 +1,14 @@
+shortens a url
+also,
+keeps track the views in url
+
+routes...
+
+post/url- generates a new short url and returns the shortened url
+
+get/:id- redirects to the original user
+
+get/url/analytics/:id- returns the clicks on the provided url
+
+****for this we have to install a package called 'nano id'which
+is used to generate nano ids which will help us to shortened the url****
