@@ -13,37 +13,37 @@ app.listen(PORT,()=>console.log(`Server Started at port:',${PORT}`));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 
+app.set("view engine","ejs");
+app.set("views",path.resolve("./views"));
 
 app.use("/url",urlRoute);
 app.use('/',staticRouter);
 //setting the view engine
-app.set("view engine","ejs");
-app.set("views",path.resolve("./views"));
+
 
 //-------------if we don't use ejs,we have to do like this------//
 
-app.get("/allEntry",async(req,res) => {
-    const allUrls = await URL.find({});
-    return res.end(`
-        <html>
-            <head>
-
-            </head>
-            <body>
-                <ol>
-                    ${allUrls.map(url=>`<li>${url.shortId}-${url.redirectURL}-${url.visitHistory.length}</li>`).join('')}
-                </ol>
-            </body>
-        </html>
-    `)
-})
-
-// app.get("/test",async(req,res) => {
+// app.get("/allEntry",async(req,res) => {
 //     const allUrls = await URL.find({});
-//     return res.render('allurl',{
-//         urls:allUrls,
-//     })
+//     return res.end(`
+//         <html>
+//             <head>
+
+//             </head>
+//             <body>
+//                 <ol>
+//                     ${allUrls.map(url=>`<li>${url.shortId}-${url.redirectURL}-${url.visitHistory.length}</li>`).join('')}
+//                 </ol>
+//             </body>
+//         </html>
+//     `)
 // })
+
+app.get("/test",async(req,res) => {
+    const allUrls = await URL.find({});
+    return res.render("/homepage")
+    })
+
 
 
 

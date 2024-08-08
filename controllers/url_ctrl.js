@@ -30,4 +30,5 @@ async function handleGetAnalytics(req,res) {
 module.exports={
     handleGenerateNewURL,
     handleGetAnalytics,
+    
 }
